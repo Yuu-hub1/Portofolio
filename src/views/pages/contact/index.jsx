@@ -1,39 +1,14 @@
+import { sosmedLinks } from "../../../core/data/contact";
 import Button from "../../components/button";
 import { Icon } from "../../components/icon";
 import InputField from "../../components/inputField";
-
-const sosmedLinks = [
-    {
-        name: "Facebook",
-        href: "https://facebook.com/Yusakcristianbs",
-        icon: "mdi:facebook",
-        color: "hover:bg-[#1877F2] hover:text-white",
-        ring: "focus:ring-[#1877F2]",
-    },
-    {
-        name: "Instagram",
-        href: "https://instagram.com/filicum_",
-        icon: "mdi:instagram",
-        color: "hover:bg-gradient-to-tr hover:from-rose-400 hover:to-purple-500 hover:text-white",
-        ring: "focus:ring-pink-400",
-    },
-    {
-        name: "LinkedIn",
-        href: "https://www.linkedin.com/in/yuu-sak-b0116a367/",
-        icon: "mdi:linkedin",
-        color: "hover:bg-[#0077b5] hover:text-white",
-        ring: "focus:ring-[#0077b5]",
-    },
-    {
-        name: "GitHub",
-        href: "https://github.com/Yuu-hub1",
-        icon: "mdi:github",
-        color: "hover:bg-[#24292f] hover:text-white",
-        ring: "focus:ring-[#24292f]",
-    },
-];
+import React from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 
 export default function ContactPage() {
+    // Formspree sudah handle pengiriman ke email yusakcristianbudi@gmail.com secara default via dashboard
+    const [state, handleSubmit] = useForm("mvzvwyvw");
+
     return (
         <div className="flex flex-col">
             <div className="w-full bg-biru h-46 flex flex-col justify-center p-5">
@@ -46,13 +21,49 @@ export default function ContactPage() {
             <div className="flex w-full mx-20 my-16 gap-20">
                 <div className="text-left p-10 bg-biru/15">
                     <h1 className="font-semibold text-xl">KONTAK SAYA</h1>
-                    <p className="text-sm text-center text-[#727272] my-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, dicta.</p>
-                    <form className="flex flex-col gap-5">
-                        <InputField placeholder="Nama Anda"/>
-                        <InputField placeholder="Email"/>
-                        <InputField placeholder="Kepada"/>
-                        <InputField placeholder="Pesan Anda" type="textarea"/>
-                        <Button unstyled className="bg-biru w-fit px-4 py-2 text-white">Kirim Pesan</Button>
+                    <p className="text-sm text-center text-[#727272] my-6">
+                        Silakan kirim pesan, pertanyaan, kritik, atau saran melalui form berikut.
+                    </p>
+                    {/* Success notification (shown above form, form not hidden) */}
+                    {state.succeeded && (
+                        <div className="mb-6 animate-fade-in">
+                            <div className="p-4 bg-green-100 border border-green-300 rounded flex flex-col items-center shadow">
+                                <h2 className="text-green-700 text-lg font-semibold mb-1 text-center">Terima kasih!</h2>
+                                <p className="text-green-700 text-center text-sm">
+                                    Pesan Anda sudah diterima. Saya akan segera menghubungi Anda kembali.
+                                </p>
+                            </div>
+                        </div>
+                    )}
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                        <div>
+                            <InputField id="name" name="name" placeholder="Nama Anda" required />
+                            <ValidationError prefix="Nama" field="name" errors={state.errors} />
+                        </div>
+                        <div>
+                            <InputField id="email" name="email" placeholder="Email" type="email" required />
+                            <ValidationError prefix="Email" field="email" errors={state.errors} />
+                        </div>
+                        {/* Input "Kepada" (subject) DIHAPUS */}
+                        <div>
+                            <InputField
+                                id="message"
+                                name="message"
+                                placeholder="Pesan Anda"
+                                type="textarea"
+                                required
+                            />
+                            <ValidationError prefix="Pesan" field="message" errors={state.errors} />
+                        </div>
+                        <Button
+                            unstyled
+                            type="submit"
+                            disabled={state.submitting}
+                            className={`bg-biru w-fit px-4 py-2 text-white${state.submitting ? " opacity-60 cursor-not-allowed" : ""}`}
+                        >
+                            {state.submitting ? "Mengirim..." : "Kirim Pesan"}
+                        </Button>
+                        <ValidationError errors={state.errors} />
                     </form>
                 </div>
                 <div className="flex flex-col justify-center">
@@ -62,7 +73,7 @@ export default function ContactPage() {
                     </p>
                     <h1 className="font-semibold text-xl mb-4">Media Sosial</h1>
                     <div className="flex gap-4 mt-2 justify-center">
-                        {sosmedLinks.map((soc, i) => (
+                        {sosmedLinks.map((soc) => (
                             <a
                                 key={soc.name}
                                 href={soc.href}
@@ -83,5 +94,5 @@ export default function ContactPage() {
                 </div>
             </div>
         </div>
-    )
+    );
 }

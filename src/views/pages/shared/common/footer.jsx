@@ -14,7 +14,7 @@ export default function Footer() {
               YUSAK<span className="text-biru">.DEV</span>
             </h2>
             <p className="text-white font-sans leading-relaxed">
-              Frontend Developer alumni magang PT. Hummatech yang berfokus pada pembuatan antarmuka web yang modern dan responsif.
+              Frontend Developer yang berfokus pada pembuatan antarmuka web yang modern dan responsif.
             </p>
           </div>
 
