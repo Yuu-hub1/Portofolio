@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import Button from "../../components/button";
-import Card from "../../components/card";
-import { Icon } from "../../components/icon";
 import AboutMe from "./about-me";
 import Experience from "./experience";
 import Project from "./project";

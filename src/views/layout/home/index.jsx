@@ -16,59 +16,14 @@ function LoadingScreen() {
 
 function HomeLayout() {
   const [isLoading, setIsLoading] = useState(true);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-  const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
-    // Fungsi untuk mengecek semua gambar sudah dimuat
-    const checkImagesLoaded = () => {
-      const images = document.querySelectorAll('img');
-      const imagePromises = Array.from(images).map(img => {
-        if (img.complete) return Promise.resolve();
-        return new Promise(resolve => {
-          img.addEventListener('load', resolve);
-          img.addEventListener('error', resolve);
-        });
-      });
-      
-      return Promise.all(imagePromises);
-    };
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
 
-    // Simulasi loading data (ganti dengan fetch data sebenarnya)
-    const loadData = async () => {
-      try {
-        // Tambahkan fetch data Anda di sini
-        // Contoh: await fetchYourData();
-        await new Promise(resolve => setTimeout(resolve, 500));
-        setDataLoaded(true);
-      } catch (error) {
-        console.error('Error loading data:', error);
-        setDataLoaded(true);
-      }
-    };
-
-    // Tunggu semua konten siap
-    const initializeLoading = async () => {
-      // Tunggu data selesai dimuat
-      await loadData();
-      
-      // Tunggu gambar selesai dimuat
-      await checkImagesLoaded();
-      setImagesLoaded(true);
-    };
-
-    initializeLoading();
+    return () => clearTimeout(timer);
   }, []);
-
-  useEffect(() => {
-    // Loading selesai jika data dan gambar sudah siap
-    if (dataLoaded && imagesLoaded) {
-      // Delay tambahan untuk memastikan semua komponen ter-render
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 300);
-    }
-  }, [dataLoaded, imagesLoaded]);
 
   if (isLoading) {
     return <LoadingScreen />;
