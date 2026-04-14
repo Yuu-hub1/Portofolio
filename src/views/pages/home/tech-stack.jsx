@@ -10,7 +10,7 @@ export default function TechStack() {
                     {/* Bento Grid: Tech Stack Section */}
         <section className="w-full bg-white py-20 px-30 flex flex-col items-center">
           <h2 className="font-semibold text-2xl text-gray-900 mb-6 text-center">
-            Keahlian Teknologi
+            KEAHLIAN TEKNOLOGI
           </h2>
           <p className="text-[#727272] max-w-2xl mb-10 text-center">
             Saya bekerja dengan ekosistem teknologi terbaru untuk memastikan performa web yang optimal.

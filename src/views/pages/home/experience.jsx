@@ -52,8 +52,8 @@ export default function Experience() {
     <>
       {/* Section 4: Pengalaman & Pendidikan (Professional Timeline) */}
       <section className="w-full bg-slate-50 py-24 px-4 md:px-32 flex flex-col items-center">
-        <h2 className="font-semibold text-2xl md:text-3xl text-gray-900 mb-2 text-center">
-          Pengalaman & Pendidikan
+        <h2 className="font-semibold text-2xl text-gray-900 mb-6 text-center">
+          PENGALAMAN DAN PENDIDIKAN
         </h2>
         <div className="mb-1 text-center text-gray-600 max-w-2xl text-base md:text-lg">
           Perjalanan profesional & pendidikan saya dalam bentuk timeline.

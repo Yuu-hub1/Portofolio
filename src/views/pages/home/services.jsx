@@ -6,7 +6,7 @@ export default function Services() {
     return (
         <section className="w-full bg-white py-20 px-30 flex items-center">
         <div className="flex flex-col w-full">
-          <h2 className="font-semibold text-2xl text-gray-900 mb-10 text-center">
+          <h2 className="font-semibold text-2xl text-gray-900 mb-6 text-center">
             LAYANAN
           </h2>
           <div className="flex flex-row flex-wrap justify-between gap-10 w-full">

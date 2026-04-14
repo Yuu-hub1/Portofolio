@@ -132,7 +132,7 @@ function HomePage() {
             FRONTEND DEVELOPER BERSERTIFIKAT KOMPETENSI. TERBIASA MENGUBAH DESAIN KOMPLEKS MENJADI APLIKASI REACT YANG RESPONSIF DAN INTERAKTIF.
           </div>
           <Button unstyled className="bg-[#222021]/80 text-white/90 py-3 px-6 mt-10">
-            TENTANG SAYA
+            <a href="contact">KONTAK SAYA</a>
           </Button>
         </div>
         <AboutMe/>

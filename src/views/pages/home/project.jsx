@@ -14,8 +14,8 @@ export default function Project() {
     <div>
       {/* Section 3: Featured Projects */}
       <section className="w-full bg-[#f9fafb] py-24 px-2 md:px-16 flex flex-col items-center">
-        <h2 className="font-semibold text-2xl md:text-3xl text-gray-900 mb-12 text-center">
-          Proyek Pilihan
+        <h2 className="font-semibold text-2xl text-gray-900 mb-6 text-center">
+          PROYEK PILIHAN
         </h2>
         <div className="flex flex-col gap-16 max-w-6xl w-full">
           {featuredProjects.map((proj, idx) => {
