@@ -3,12 +3,17 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../../pages/shared/common/navbar";
 import Footer from "../../pages/shared/common/footer";
 
-function LoadingScreen() {
+function LoadingScreen({ isFadingOut }) {
   return (
-    <div className="fixed inset-0 z-[9999] bg-white flex items-center justify-center">
+    <div 
+      className={`fixed inset-0 z-[9999] bg-white flex items-center justify-center transition-opacity duration-500 ${
+        isFadingOut ? "opacity-0 pointer-events-none" : "opacity-100"
+      }`}
+    >
       <div className="flex flex-col items-center gap-4">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-biru"></div>
-        <span className="font-bold text-biru text-lg">Memuat...</span>
+        {/* Menggunakan kelas animasi Tailwind 'border-biru' sesuai tema Anda */}
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-biru"></div>
+        <span className="font-bold text-biru text-lg tracking-wider animate-pulse">Memuat halaman...</span>
       </div>
     </div>
   );
@@ -16,27 +21,62 @@ function LoadingScreen() {
 
 function HomeLayout() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    // 1. Ambil daftar gambar penting yang wajib ditunggu (terutama background utama)
+    const imagesToLoad = ["/white.jpg"]; 
+    let loadedCount = 0;
 
-    return () => clearTimeout(timer);
+    const handlePageLoaded = () => {
+      // Fungsi untuk menutup loading dengan efek transisi memudar
+      setIsFadingOut(true);
+      setTimeout(() => setIsLoading(false), 500); // 500ms sinkron dengan duration-500
+    };
+
+    const checkAllResources = () => {
+      // Pastikan window load sudah terpicu DAN semua gambar penting selesai diunduh
+      if (document.readyState === "complete" && loadedCount === imagesToLoad.length) {
+        handlePageLoaded();
+      }
+    };
+
+    // 2. Preload gambar secara manual di latar belakang
+    imagesToLoad.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        loadedCount++;
+        checkAllResources();
+      };
+      img.onerror = () => {
+        loadedCount++; // Tetap hitung agar tidak macet/stuck jika gambar gagal dimuat
+        checkAllResources();
+      };
+    });
+
+    // 3. Listener untuk mendeteksi seluruh dokumen (skrip, css, font) selesai dimuat
+    if (document.readyState === "complete") {
+      checkAllResources();
+    } else {
+      window.addEventListener("load", checkAllResources);
+      return () => window.removeEventListener("load", checkAllResources);
+    }
   }, []);
 
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
-
   return (
-    <div className="relative h-auto overflow-x-hidden z-10">
-      <Navbar />
-      <div className="pt-20">
-        <Outlet />
+    <>
+      {/* LoadingScreen tetap dirender di atas struktur HTML utama agar transisinya mulus */}
+      {isLoading && <LoadingScreen isFadingOut={isFadingOut} />}
+      
+      <div className="relative h-auto overflow-x-hidden z-10">
+        <Navbar />
+        <div className="pt-20">
+          <Outlet />
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 }
 
