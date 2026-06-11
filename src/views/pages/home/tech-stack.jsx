@@ -7,7 +7,6 @@ export default function TechStack() {
 
   return (
     <div>
-      {/* Tech Stack Section */}
       <section className="w-full bg-white py-10 px-4 sm:py-16 sm:px-8 md:px-16 lg:px-32 flex flex-col items-center">
         <h2 className="font-semibold text-xl sm:text-2xl md:text-3xl text-gray-900 mb-6 text-center">
           KEAHLIAN TEKNOLOGI
@@ -15,7 +14,6 @@ export default function TechStack() {
         <p className="text-[#727272] max-w-2xl mb-10 text-center text-sm sm:text-base">
           Saya bekerja dengan ekosistem teknologi terbaru untuk memastikan performa web yang optimal.
         </p>
-        {/* Tech Stack Responsive Grid */}
         <div
           className="
             grid
@@ -45,9 +43,9 @@ export default function TechStack() {
                 relative
                 "
               style={{
-                border: `1.5px solid ${tech.color}80`, // faded color border
+                border: `1.5px solid ${tech.color}80`,
                 background: `linear-gradient(135deg, rgba(255,255,255,0.22) 60%, ${tech.bg} 100%)`,
-                backdropFilter: "blur(16px)", // Glassmorphism blur
+                backdropFilter: "blur(16px)", 
                 WebkitBackdropFilter: "blur(16px)",
                 boxShadow:
                   hoverIndex === idx
@@ -78,7 +76,6 @@ export default function TechStack() {
             </div>
           ))}
         </div>
-        {/* End: Tech Stack Responsive Grid */}
       </section>
     </div>
   );

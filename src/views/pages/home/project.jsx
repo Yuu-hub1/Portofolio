@@ -3,16 +3,13 @@ import { Icon } from "../../components/icon";
 import { featuredProjects } from "../../../core/data/project";
 
 export default function Project() {
-  // State for featured card hover (for overlay button)
   const [hoveredProjectIdx, setHoveredProjectIdx] = useState(null);
 
-  // Badge style helper
   const badgeClass =
     "bg-gray-100 text-gray-700 text-[11px] font-medium px-2 py-1 mr-2 mb-2 rounded shadow border inline-flex items-center";
 
   return (
     <div>
-      {/* Section 3: Featured Projects */}
       <section className="w-full bg-[#f9fafb] py-24 px-2 md:px-16 flex flex-col items-center">
         <h2 className="font-semibold text-2xl text-gray-900 mb-6 text-center">
           PROYEK PILIHAN
@@ -31,13 +28,11 @@ export default function Project() {
                   minHeight: "340px",
                 }}
               >
-                {/* Label */}
                 <div className="absolute top-4 left-4 z-20">
                   <span className="bg-biru text-white text-xs font-semibold px-4 py-2 rounded-full shadow-lg tracking-wide uppercase">
                     {proj.label}
                   </span>
                 </div>
-                {/* IMAGE */}
                 <div
                   className="relative w-full md:w-1/2 h-60 md:h-auto flex items-center justify-center overflow-hidden"
                   onMouseEnter={() => setHoveredProjectIdx(idx)}
@@ -70,7 +65,6 @@ export default function Project() {
                     </div>
                   )}
                 </div>
-                {/* TEXT */}
                 <div className="w-full md:w-1/2 px-7 py-9 flex flex-col justify-center">
                   <h3 className="text-xl md:text-2xl font-bold text-biru mb-3">
                     {proj.title}

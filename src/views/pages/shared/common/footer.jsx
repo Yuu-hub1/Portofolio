@@ -8,7 +8,6 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 border-b border-slate-800 pb-12">
           
-          {/* Bagian 1: Brand/Nama */}
           <div>
             <h2 className="text-2xl font-bold font-sans tracking-tighter mb-4">
               YUSAK<span className="text-biru">.DEV</span>
@@ -17,8 +16,6 @@ export default function Footer() {
               Frontend Developer yang berfokus pada pembuatan antarmuka web yang modern dan responsif.
             </p>
           </div>
-
-          {/* Bagian 2: Navigasi Cepat */}
           <div className="md:ml-20">
             <h3 className="text-lg font-bold mb-6 font-sans">Navigasi</h3>
             <ul className="space-y-4 text-white font-sans">
@@ -27,8 +24,6 @@ export default function Footer() {
               <li><a href="/contact" className="hover:text-biru transition">Kontak</a></li>
             </ul>
           </div>
-
-          {/* Bagian 3: Media Sosial */}
           <div>
             <h3 className="text-lg font-bold mb-6 font-sans">Terhubung Dengan Saya</h3>
             <div className="flex gap-4">
@@ -45,8 +40,6 @@ export default function Footer() {
           </div>
 
         </div>
-
-        {/* Baris Paling Bawah */}
         <div className="text-center text-white text-sm font-sans">
           <p>© {currentYear} Yusak Christian Budisusilo. Dibuat menggunakan React & Tailwind CSS.</p>
         </div>

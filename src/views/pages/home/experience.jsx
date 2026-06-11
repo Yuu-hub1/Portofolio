@@ -13,7 +13,6 @@ export default function Experience() {
     last,
   }) => (
     <div className="flex w-full relative group">
-      {/* Vertical Line */}
       <div className="flex flex-col items-center min-w-[40px]">
         <span
           className={`rounded-full flex items-center justify-center w-8 h-8 text-white border-4 border-white shadow ${color}`}
@@ -24,7 +23,6 @@ export default function Experience() {
           <span className="block w-[3px] h-full grow bg-gray-300 mx-auto mt-0.5 mb-0.5" />
         )}
       </div>
-      {/* Timeline Card/Content */}
       <div className="ml-3 flex-1 pb-10">
         <div className="bg-white rounded-xl shadow-md p-5 mb-2 border border-slate-100">
           <div className="flex items-center justify-between">
@@ -50,7 +48,6 @@ export default function Experience() {
 
   return (
     <>
-      {/* Section 4: Pengalaman & Pendidikan (Professional Timeline) */}
       <section className="w-full bg-slate-50 py-24 px-4 md:px-32 flex flex-col items-center">
         <h2 className="font-semibold text-2xl text-gray-900 mb-6 text-center">
           PENGALAMAN DAN PENDIDIKAN
@@ -58,10 +55,7 @@ export default function Experience() {
         <div className="mb-1 text-center text-gray-600 max-w-2xl text-base md:text-lg">
           Perjalanan profesional & pendidikan saya dalam bentuk timeline.
         </div>
-
-        {/* Timeline Wrapper */}
         <div className="w-full flex flex-col max-w-2xl mt-12">
-          {/* Pengalaman Kerja */}
           <div>
             <h3 className="font-medium text-lg text-biru mb-4 uppercase tracking-wide flex items-center gap-2">
               <Icon name="mdi:briefcase-outline" className="w-5 h-5" /> Pengalaman Kerja / Magang
@@ -70,7 +64,6 @@ export default function Experience() {
               <TimelineItem key={idx} {...exp} last={idx === experienceTimeline.length - 1} />
             ))}
           </div>
-          {/* Pendidikan & Sertifikat */}
           <div className="mt-14">
             <h3 className="font-medium text-lg text-purple-600 mb-4 uppercase tracking-wide flex items-center gap-2">
               <Icon name="mdi:school-outline" className="w-5 h-5" /> Pendidikan & Sertifikat

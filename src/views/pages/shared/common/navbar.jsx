@@ -114,12 +114,10 @@ const Navbar = () => {
       type="button"
     >
       {open ? (
-        // Icon for close, as requested
         <span className="flex items-center justify-center h-6 w-6">
           <Icon name="material-symbols:close-rounded" className="text-black" />
         </span>
       ) : (
-        // Hamburger icon (same as before)
         <>
           <span className="block h-0.5 w-6 bg-black rounded transition-all duration-300"></span>
           <span className="block h-0.5 w-6 bg-black rounded my-1 transition-all duration-300"></span>
@@ -141,9 +139,7 @@ const Navbar = () => {
             Yusak
           </Button>
         </div>
-        {/* Hamburger for mobile */}
         <Hamburger open={menuOpen} toggle={() => setMenuOpen((prev) => !prev)} />
-        {/* Navigation for desktop */}
         <div
           className="hidden sm:flex gap-4 md:gap-8 lg:gap-10 text-xs sm:text-sm ml-auto"
         >
@@ -187,8 +183,6 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-
-      {/* Mobile Menu */}
       {menuOpen && (
         <div className="sm:hidden absolute top-full left-0 right-0 bg-white border-b shadow-md animate-fadeIn z-40">
           <nav className="flex flex-col items-center gap-2 py-3 px-3">
